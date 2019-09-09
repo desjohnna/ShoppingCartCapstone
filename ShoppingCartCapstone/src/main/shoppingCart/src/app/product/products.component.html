@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Produce for Sale</h4>
+
+            <!-- SEARCH INPUT BOX AND FILTER -->
+            <!-- <input [(ngModel)]="filterText" placeholder="Search"> -->
+
+            <div class="row">
+                <div class="col-md-6 mb-3" *ngFor="let product of productList; let i = index">
+
+
+                    <div class="row">
+                        <div class="col s12 m6">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img [src]="product.imageUrl">
+                                    <span class="card-title"></span>
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                            (click)="onAddProductToCart(product)"
+                                            class="material-icons">add_shopping_cart</i></a>
+                                </div>
+                                <div class="card-content" id="productName">{{ product.name }}
+                                    <hr>
+                                    <p> {{ product.price | currency }}</p>
+                                    <!-- <a [routerLink]="[product.id]" class="btn btn-primary">Add to Cart</a> -->
+                                    <!-- 
+                                    <button (click)="onAddProductToCart(product)" class="btn btn-primary m-1"
+                                        id=addToCartBtn`${product.id}`>Add to Cart</button> -->
+                                    <!-- <app-add-to-cart-button [item]="item"></app-add-to-cart-button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
