@@ -24,4 +24,6 @@ export class CartService {
   emptyCart() {
     this.productsInCart = [];
   }
+
+  
 }

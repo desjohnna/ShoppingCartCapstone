@@ -9,13 +9,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsComponent } from './product/products.component';
 import { CartComponent } from './cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
+import { SearchPipe } from './search.pipe';
+import { ProductCardComponent } from './product-card/product-card.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductsComponent,
     CartComponent,
-    AdminComponent
+    AdminComponent,
+    SearchPipe,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

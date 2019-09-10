@@ -12,8 +12,9 @@ export class ProductsComponent implements OnInit {
   
   productList: Product[] = [];
   productSub: Subscription;
+  filterText: string = '';
   @Input() product: Product;
-  @Input() i: number
+  @Input() i: number;
 
   constructor(private productService: ProductsService) { }
 
@@ -35,21 +36,20 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  onAddProductToCart(product: Product) {
-    this.productService.addProductToCart(product);
+ 
 
 
     //CHANGEING THE BUTTON TEXT AND COLOR AND SETTING TIME OUT FOR IT TO GO BACK
-    document.getElementById('addToCartBtn').innerText = 'Added!'
-    document.getElementById('addToCartBtn').style.backgroundColor = 'red'
-    setTimeout(() => {
-      document.getElementById('addToCartBtn').innerText = 'Add to Cart'
-      document.getElementById('addToCartBtn').style.backgroundColor = ''
+    // document.getElementById('addToCartBtn').innerText = 'Added!'
+    // document.getElementById('addToCartBtn').style.backgroundColor = 'red'
+    // setTimeout(() => {
+    //   document.getElementById('addToCartBtn').innerText = 'Add to Cart'
+    //   document.getElementById('addToCartBtn').style.backgroundColor = ''
       
 
-    }, 2000);
+    // }, 2000);
   }
 
  
 
-}
+
