@@ -16,5 +16,16 @@ export class SearchPipe implements PipeTransform {
 
     return productsMatching;
   }
+
+  transform2(value: Product[], filterCategory: string): Product[] {
+    let productsMatching = value.filter((product: Product) => {
+      if (product.category == filterCategory) {
+        return true;
+      }
+      return false;
+    });
+
+    return productsMatching;
+  }
 // ADD FILTER FOR PRODUCT CATEGORY
 }

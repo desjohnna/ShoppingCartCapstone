@@ -1,3 +1,11 @@
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+        <select ng-model="selectedName" ng-options="x for x in names">
+        </select>
+        
+        </div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -11,15 +19,31 @@
                     <p *ngIf="!product">product not found</p>
                 </div>
                 <!-- ADD A DROPDOWN SEARCH FILTER BY CATEGORY HERE -->
+                <!-- <div class="input-field col s12 m6" [(ngModel)]="filterCategory">
+                    <div class="select-wrapper"> 
+                        <input class="select-dropdown dropdown-trigger" type="text">
+                        <div class="input-field col s12"> -->
+                            <select>
+                                <option value="">Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- </div>
         </div>
     </div>
+</div> -->
 
-    <div class="row">
-        <div class="col-md-6 mb-3" *ngFor="let product of productList; let i = index">
-            <div class="row">
+<div class="row">
+    <div class="col-md-6 mb-3" *ngFor="let product of productList; let i = index">
+        <div class="row">
 
-            </div>
         </div>
     </div>
 </div>
+<!-- </div> -->

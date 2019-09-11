@@ -8,11 +8,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-
+  
   
   productList: Product[] = [];
   productSub: Subscription;
   filterText: string = '';
+  filterCategory: string = '';
   @Input() product: Product;
   @Input() i: number;
 
@@ -20,6 +21,10 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
+    // var app = app.module('myApp', []);
+    // app.controller('myCtrl', function($scope) {
+    //   $scope.names = ["Emil", "Tobias", "Linus"];
+    // });
   }
 
   //subscribe

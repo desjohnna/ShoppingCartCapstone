@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
   cartItems: Product[] = [];
+  countItems: [] = [];
   infoText = '';
   total = 0;
   quantity = 0;
@@ -19,7 +20,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.getProductsInCart();
     // this.getQuantity(this.cartItems)
-  
+    // this.getQuantity()
   }
 
   getProductsInCart() {
@@ -32,10 +33,19 @@ export class CartComponent implements OnInit {
 
   }
 
-//    getQuantity() {
-//  this.cartItems.filter(id: ())
-  
-//   };
+
+
+  // getQuantity() {
+  //    let i = 0;
+  //     return this.cartItems[i].reduce(function(prev,next){
+  //       prev[next] = (prev[next] + 1) || 1;
+  //       return prev;
+  //   },{});
+
+    
+
+
+  // };
 
   calculateTotal() {
     this.total = 0;
