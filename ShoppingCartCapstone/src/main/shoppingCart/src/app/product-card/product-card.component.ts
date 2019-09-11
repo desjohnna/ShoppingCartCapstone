@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product, ProductsService } from '../products.service';
-import M = require('minimatch');
+
 
 @Component({
   selector: 'app-product-card',
@@ -21,9 +21,10 @@ export class ProductCardComponent implements OnInit {
 
   onAddProductToCart(product: Product) {
     this.productService.addProductToCart(product);
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.tooltipped');
-      var instances = M.Tooltip.init(elems, options);
-      var instance = M.Tooltip.getInstance(elem);
-}
+    // document.addEventListener('DOMContentLoaded', function() {
+      // var elems = document.querySelectorAll('.tooltipped');
+      // var instances = M.Tooltip.init(elems, options);
+      // var instance = M.Tooltip.getInstance(elem);
+// }
   }
+}

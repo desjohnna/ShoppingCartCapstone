@@ -13,6 +13,10 @@ public class ProductsService {
     @Autowired
     private ProductsRepository productsRepo;
 
+/* USING TEST */
+    public ProductsService(ProductsRepository productRepoMock) {
+    }
+
     public List<Products> getAllProducts() {
         return productsRepo.findAll();
     }

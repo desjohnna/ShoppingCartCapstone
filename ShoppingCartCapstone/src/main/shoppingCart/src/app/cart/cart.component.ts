@@ -11,18 +11,31 @@ export class CartComponent implements OnInit {
   cartItems: Product[] = [];
   infoText = '';
   total = 0;
+  quantity = 0;
 
   constructor(private productService: ProductsService,
     private router: Router) { }
 
   ngOnInit() {
     this.getProductsInCart();
+    // this.getQuantity(this.cartItems)
+  
   }
 
   getProductsInCart() {
     this.cartItems = this.productService.getProductsInCart();
     this.calculateTotal();
+
+    // this.cartItems.forEach(i => {
+    //   if(i.name.toLowerCase(). )
+    // })
+
   }
+
+//    getQuantity() {
+//  this.cartItems.filter(id: ())
+  
+//   };
 
   calculateTotal() {
     this.total = 0;

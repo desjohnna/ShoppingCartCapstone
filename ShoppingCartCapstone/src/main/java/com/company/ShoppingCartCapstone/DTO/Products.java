@@ -3,6 +3,7 @@ package com.company.ShoppingCartCapstone.DTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -13,14 +14,15 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Float price;
+    /* BigDecimal is used here for better accuracy than float or double values */
+    private BigDecimal price = BigDecimal.valueOf(0);
     private Boolean isDomestic;
     private String category;
     private String imageUrl;
 
     public Products() {}
 
-    public Products(Integer id, String name, Float price, Boolean isDomestic, String category) {
+    public Products(Integer id, String name, BigDecimal price, Boolean isDomestic, String category, String imageUrl) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -45,11 +47,11 @@ public class Products {
         this.name = name;
     }
 
-    public Float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

@@ -16,5 +16,5 @@ export class SearchPipe implements PipeTransform {
 
     return productsMatching;
   }
-
+// ADD FILTER FOR PRODUCT CATEGORY
 }
