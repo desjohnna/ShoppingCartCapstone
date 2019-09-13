@@ -28,8 +28,9 @@ export class CartComponent implements OnInit {
   getProductsInCart() {
     this.cartItems = this.productService.getProductsInCart();
     this.calculateTotal();
-    this.productService.getQuantity();
-    this.quantity = this.productService.getQuantity();
+    
+    // this.productService.getQuantity();
+    // this.quantity = this.productService.getQuantity();
     // this.quantity = this.cartService.getQuantity()
     // this.cartItems.forEach(i => {
     //   if(i.name.toLowerCase(). )
@@ -40,33 +41,33 @@ export class CartComponent implements OnInit {
 
 
   // getQuantity() {
-  setQuantity = function (quantity, relative) {
+  // setQuantity = function (quantity, relative) {
 
 
-    var quantityInt = parseInt(quantity);
-    if (quantityInt % 1 === 0) {
-      if (relative === true) {
-        this._quantity += quantityInt;
-      } else {
-        this._quantity = quantityInt;
-      }
-      if (this._quantity < 1) this._quantity = 1;
+    // var quantityInt = parseInt(quantity);
+    // if (quantityInt % 1 === 0) {
+    //   if (relative === true) {
+    //     this._quantity += quantityInt;
+    //   } else {
+    //     this._quantity = quantityInt;
+    //   }
+    //   if (this._quantity < 1) this._quantity = 1;
 
-    } else {
-      this._quantity = 1;
+    // } else {
+    //   this._quantity = 1;
       // $log.info('Quantity must be an integer and was defaulted to 1');
-    }
-    this.quantity = this._quantity;
+  //   }
+  //   this.quantity = this._quantity;
 
-  };
+  // };
 
-  getQuantity = function () {
-    console.log(this._quantity)
-    console.log(this.quanity)
-    return this._quantity;
+  // getQuantity = function () {
+  //   console.log(this._quantity)
+  //   console.log(this.quanity)
+  //   return this._quantity;
 
 
-  };
+  // };
 
 
 

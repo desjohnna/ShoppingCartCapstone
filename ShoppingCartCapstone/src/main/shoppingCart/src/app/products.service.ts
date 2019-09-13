@@ -10,11 +10,13 @@ export class Product {
   isDomestic: boolean;
   category: string;
   imageUrl: string;
+  quantity: number;
   description?: string;
 
 
 
-  constructor(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, description?: string) {
+
+  constructor(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, quantity: number, description?: string) {
 
     this.id = id;
     this.name = name;
@@ -23,17 +25,21 @@ export class Product {
     this.category = category;
     this.imageUrl = imageUrl;
     this.description = description;
+    this.quantity = quantity;
   }
 }
 
-export class quantityKey {
-  cartItems: Product[];
-  constructor(cartItems: Product[]) {
-    this.cartItems = cartItems
-  }
+// export class cartItem {
+//   product: Product;
+//   quantity: number;
 
-  
-}
+//   constructor(product: Product, quantity: number) {
+//     this.product = product;
+//     this.quantity = quantity;
+//   }
+
+
+// }
 
 
 
@@ -45,7 +51,7 @@ export class ProductsService {
   productsList: Product[] = [];
   cartItems: Product[] = [];
   productQuantity: number = 0;
-  quantityKey
+
 
 
   apiUrl = 'http://localhost:8080';
@@ -54,10 +60,10 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
 
-  addProduct(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, description?: string) {
+  addProduct(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, quantity: number, description?: string) {
 
 
-    const newProduct = new Product(id, name, price, isDomestic, category, imageUrl, description);
+    const newProduct = new Product(id, name, price, isDomestic, category, imageUrl, quantity, description);
 
     this.productsList.push(newProduct)
   }
@@ -79,14 +85,14 @@ export class ProductsService {
     return this.http.get<Product[]>(url)
   }
 
-  updateProductOnServer(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, description?: string) {
-    const newProduct = new Product(id, name, price, isDomestic, category, imageUrl, description);
+  updateProductOnServer(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, quantity: number, description?: string) {
+    const newProduct = new Product(id, name, price, isDomestic, category, imageUrl, quantity, description);
     const url = `${this.apiUrl}/productsList/${id}`;
     return this.http.put<Product>(url, newProduct);
   }
 
-  createNewProductOnServer(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, description?: string) {
-    const newProduct = new Product(id, name, price, isDomestic, category, imageUrl, description);
+  createNewProductOnServer(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, quantity, description?: string) {
+    const newProduct = new Product(id, name, price, isDomestic, category, imageUrl, quantity, description);
     const url = this.apiUrl + '/products';
     return this.http.post<Product>(url, newProduct)
   }
@@ -103,41 +109,55 @@ export class ProductsService {
     return this.cartItems
   }
 
-  addProductToCart(cartItem: Product) {
-    this.cartItems.push(cartItem)
+  addProductToCart(cartItem: Product): number {
+    // this.cartItems.push(cartItem)
+
+    if (this.cartItems.includes(cartItem)) {
+      cartItem.quantity += 1
+      console.log(cartItem.quantity);
+      return cartItem.quantity;
+
+    } else {
+      this.cartItems.push(cartItem)
+      
+      cartItem.quantity = 1
+      return cartItem.quantity;
+
+    }
+
   }
 
   purchaseProducts(cartItems: Product[]): Observable<Product[]> {
     return of(this.cartItems);
   }
 
-  getQuantity(): number {
+  // getQuantity(): number {
 
 
-    this.productsList.sort();
+  //   this.productsList.sort();
 
-    var currentItem = null;
-    var count = 0;
+  //   var currentItem = null;
+  //   var count = 0;
 
-    for (var i = 0; i < this.cartItems.length; i++) {
-      if (this.cartItems[i] != currentItem) {
-        // if (count > 0) {
-        // }
-        currentItem = this.cartItems[i];
-        this.productQuantity = count;
-        count = 1;
+  //   for (var i = 0; i < this.cartItems.length; i++) {
+  //     if (this.cartItems[i] != currentItem) {
+  //       // if (count > 0) {
+  //       // }
+  //       currentItem = this.cartItems[i];
+  //       this.productQuantity = count;
+  //       count = 1;
 
-      } else {
-        count++;
-      }
-    }
-    // if (count > 0) {
+  //     } else {
+  //       count++;
+  //     }
+  //   }
+  //   // if (count > 0) {
 
-    // }
-    this.productQuantity = count;
-    console.log(count)
-    return this.productQuantity
-  }
+  //   // }
+  //   this.productQuantity = count;
+  //   console.log(count)
+  //   return this.productQuantity
+  // }
 
 
 

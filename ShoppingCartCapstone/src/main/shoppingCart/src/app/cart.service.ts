@@ -22,9 +22,6 @@ export class CartService {
   //   //     }
   //   // }
 
-
-
-
   //   return this.productsInCart;
 
   // }
@@ -37,31 +34,32 @@ export class CartService {
     this.productsInCart = [];
   }
 
-  getQuantity(): number {
-   
+  // getQuantity(): number {
 
-   this.productsInCart.sort();
 
-   var current = null;
-   var cnt = 0;
-   for (var i = 0; i < this.productsInCart.length; i++) {
-       if (this.productsInCart[i] != current) {
-           if (cnt > 0) {
-               document.write(current + ' comes --> ' + cnt + ' times<br>');
-           }
-           current = this.productsInCart[i];
-           cnt = 1;
-       } else {
-           cnt++;
-       }
-   }
-   if (cnt > 0) {
-    document.write(current + ' comes --> ' + cnt + ' times');
-   }
-   this.productQuantity = cnt;
-   console.log(cnt)
-   return cnt
-  }
+  //  this.productsInCart.sort();
+
+  //  var current = null;
+  //  var cnt = 0;
+  //  for (var i = 0; i < this.productsInCart.length; i++) {
+  //      if (this.productsInCart[i] != current) {
+  //          if (cnt > 0) {
+  //              document.write(current + ' comes --> ' + cnt + ' times<br>');
+  //          }
+  //          current = this.productsInCart[i];
+  //          cnt = 1;
+  //      } else {
+  //          cnt++;
+  //      }
+  //  }
+  //  if (cnt > 0) {
+  //   document.write(current + ' comes --> ' + cnt + ' times');
+  //  }
+  //  this.productQuantity = cnt;
+  //  console.log(cnt)
+  //  return cnt
+  // }
+
 
 
 }

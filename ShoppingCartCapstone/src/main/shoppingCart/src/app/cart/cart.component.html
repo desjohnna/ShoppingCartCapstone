@@ -8,7 +8,7 @@
 
       <div class="row mb-2" *ngFor="let cartItem of cartItems; let i = index">
         <div id="productName" class="col-6">
-          {{i + 1}}: {{cartItem.name}}
+          {{i + 1}}: {{ cartItem.name }} {{ cartItem.quantity }}
         </div>
         <div class="col-6">
           <button id="deleteBtn" class="btn float-right" (click)="onRemoveProductFromCart(i)">Delete</button>
@@ -17,6 +17,7 @@
       <strong *ngIf="cartItems.length > 0">Total: {{ total | currency }}</strong>
       <div class="row" *ngIf="cartItems.length === 0">
         <div class="col-12">
+          <!-- Put box here with empty cart picture -->
           <p>No items in cart.</p>
         </div>
       </div>

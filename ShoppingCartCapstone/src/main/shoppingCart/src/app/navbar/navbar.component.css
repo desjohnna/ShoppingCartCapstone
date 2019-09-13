@@ -4,3 +4,7 @@
 nav {
     background-color: #52b453;
 }
+
+.nav-wrapper {
+    padding: 0px 50px;
+}
