@@ -1,4 +1,7 @@
-<div class="container">
+<div  id="parallax"  class="container">
+    <div  class="col-md-12">
+        <h2 id="pageTitle">Welcome To Your Shopping Cart</h2>
+    </div>
   <div class="row">
     <div class="col-12">
 
@@ -7,7 +10,7 @@
           {{i + 1}}: {{cartItem.name}}
         </div>
         <div class="col-6">
-          <button class="btn btn-danger float-right" (click)="onRemoveProductFromCart(i)">Delete</button>
+          <button id="deleteBtn" class="btn float-right" (click)="onRemoveProductFromCart(i)">Delete</button>
         </div>
       </div>
       <strong *ngIf="cartItems.length > 0">Total: {{ total | currency }}</strong>
@@ -19,7 +22,7 @@
 
       <div class="row">
         <div class="col-12">
-          <button class="btn btn-info" (click)="onPurchase()" [disabled]="cartItems.length === 0">Purchase</button>
+          <button id="purchaseBtn" class="btn" (click)="onPurchase()" (click)="onToggleRecieptDisplay()" [disabled]="cartItems.length === 0">Purchase</button>
           <p>{{infoText}}</p>
         </div>
       </div>
@@ -32,12 +35,12 @@
   <!-- CARD RECIEPT NEED TO ADD WHEN PURCHASE BUTTON CLICKED TO POP UP -->
 
 
-  <div class="row">
+  <div *ngIf="displayReciept" class="row">
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">ORDER RECEIPT</span>
-          <table>
+          <table class="highlight">
               <thead>
                 <tr>
                     <th>Product Name</th>
@@ -80,8 +83,8 @@
         </div>
         <div class="card-action">
           <!--MAKE AN OPTION TO PRINT OR EMAIL -->
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
+          <a href="#">Download Reciept</a>
+          <a href="#">Print Reciept</a>
         </div>
       </div>
     </div>

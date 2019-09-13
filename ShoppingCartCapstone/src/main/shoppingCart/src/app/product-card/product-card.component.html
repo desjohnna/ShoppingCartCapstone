@@ -1,16 +1,38 @@
-<div class="row">
-    <div class="col s12 m6">
-        <div class="card">
-            <div class="card-image">
-                <img [src]="product.imageUrl">
-                <span class="card-title">
-                    <!-- {{ i + 1 }}: {{ product.name }} -->
-                </span>
-                <a onclick="M.toast({html: 'Added to Cart!'})" class= "btn tooltipped" data-position="right" data-tooltip="Add to Cart" class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i (click)="onAddProductToCart(product)" class="material-icons">add_shopping_cart</i></a>
+<!-- <div class="row"> -->
+        
+    <div class="col s4" >
+   
 
+        <!-- CARD STARTS HERE -->
+
+        <div class="card large card-panel hoverable">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" [src]="product.imageUrl">
+                <a  onclick="M.toast({html: 'Added to Cart!'})" class="btn-floating halfway-fab waves-effect waves-light red"><i (click)="onAddProductToCart(product)" class= "material-icons right tooltipped" data-position="right" data-tooltip="Add to Cart">add_shopping_cart</i></a>
+            </div>
+            
+            <div class="card-content">
+               <h5>{{ product.name }}</h5>
+               
+               <p> {{ product.price | currency }}</p>
+               
             </div>
 
-            <div class="card-content" id="productName">{{ product.name }}
-                <hr>
-                <p> {{ product.price | currency }}</p>
-                <a [routerLink]="[product.id]" class="waves-effect waves-light btn-large"><i class="material-icons left">info</i>View Details</a>
+            <p><button id="desBtn"class="text-darken-2 btn-flat waves-effect waves-teal activator">Product Description</button>
+                
+            </p>
+
+             <!-- THIS IS WHAT DISPLAYS AFTER DESCRIPTION BUTTON IS CLICKED -->
+         
+
+
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ product.name }}<i
+                        class="material-icons right">close</i></span>
+                        <hr>
+                <p class="flow-text">{{ product.description }}</p>
+            </div>
+        </div>
+
+
+    </div>

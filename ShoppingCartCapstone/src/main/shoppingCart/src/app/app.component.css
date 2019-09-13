@@ -1,0 +1,13 @@
+#parallax {
+    background-image: url("../assets/images/FFM-Summer-Is-Here-Fresh-Fruits-Vegetables.jpg");
+
+     /* Set a specific height */
+  height: 300px;
+  width: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }

@@ -1,0 +1,36 @@
+#parallax {
+    background-image: url("../../assets/images/FFM-Summer-Is-Here-Fresh-Fruits-Vegetables.jpg");
+    background-color: rgba(0,0,0,0.6);
+    filter: opacity(70%);
+
+     /* Set a specific height */
+  height: 500px;
+  width: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+  #pageTitle {
+    text-align: center;
+    margin: 0;
+    padding: 40px;
+    color: white;
+}
+
+#purchaseBtn {
+    background-color:  #52b453;
+}
+
+#deleteBtn {
+    background-color: rgb(190, 13, 13);
+}
+
+p{
+    color: white;
+    /* font-weight: bold; */
+    font-size: 20px;
+}

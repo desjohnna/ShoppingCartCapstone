@@ -1,18 +1,17 @@
 
-<div ng-app="myApp" ng-controller="myCtrl">
 
-        <select ng-model="selectedName" ng-options="x for x in names">
-        </select>
-        
-        </div>
 
-<div class="container">
+<div   id="parallax" >
+
     <div class="row">
-        <div class="col-md-12">
-            <h2>Online Market</h2>
+            <h2 id="pageTitle">Online Market</h2>
+    
+        <div  class="col-md-12 container">
 
             <!-- SEARCH INPUT BOX AND FILTER -->
-            <input [(ngModel)]="filterText" placeholder="Search">
+            <div  class="col-md-12 container">
+            <input id="searchBox" [(ngModel)]="filterText" placeholder="Search">
+            </div>
             <div class="row">
                 <div class="col-md-6 mb-3" *ngFor="let product of (productList | search: filterText); let i = index">
                     <app-product-card [product]="product" [i]="i"></app-product-card>
@@ -32,8 +31,8 @@
                             <label>Materialize Select</label>
                         </div>
                     </div>
-                </div>
-            </div>
+                
+            
             <!-- </div>
         </div>
     </div>
@@ -46,4 +45,4 @@
         </div>
     </div>
 </div>
-<!-- </div> -->
+        </div>

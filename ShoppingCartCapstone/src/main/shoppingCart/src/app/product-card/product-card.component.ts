@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product, ProductsService } from '../products.service';
+import { CartService } from '../cart.service';
 
 
 @Component({
@@ -8,23 +9,19 @@ import { Product, ProductsService } from '../products.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-
+  // @Input() quantity: number;
   @Input() product: Product;
   @Input() i: number;
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private cartService: CartService) { }
 
   ngOnInit() {
-    
+  
    
   }
 
   onAddProductToCart(product: Product) {
     this.productService.addProductToCart(product);
-    // document.addEventListener('DOMContentLoaded', function() {
-      // var elems = document.querySelectorAll('.tooltipped');
-      // var instances = M.Tooltip.init(elems, options);
-      // var instance = M.Tooltip.getInstance(elem);
-// }
+//  this.cartService.getQuantity();
   }
 }

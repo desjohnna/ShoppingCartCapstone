@@ -19,16 +19,19 @@ public class Products {
     private Boolean isDomestic;
     private String category;
     private String imageUrl;
+    private String description;
+
 
     public Products() {}
 
-    public Products(Integer id, String name, BigDecimal price, Boolean isDomestic, String category, String imageUrl) {
+    public Products(Integer id, String name, BigDecimal price, Boolean isDomestic, String category, String imageUrl, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.isDomestic = isDomestic;
         this.category = category;
         this.imageUrl = imageUrl;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -78,6 +81,14 @@ public class Products {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 
