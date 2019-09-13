@@ -12,8 +12,13 @@
 
 #desBtn{
     background-color: #52b453;
+    color: white;
 }
 
 .waves-effect {
     overflow: visible;
 }
+
+/* img {
+    height: 300px;
+} */
