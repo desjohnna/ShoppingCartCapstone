@@ -30,7 +30,7 @@
 #parallax {
     background-image: url("../../assets/images/FFM-Summer-Is-Here-Fresh-Fruits-Vegetables.jpg");
     background-color: rgba(0,0,0,0.6);
-    /* filter: opacity(70%); */
+    filter: opacity(95%);
 
      /* Set a specific height */
   height: 500px;

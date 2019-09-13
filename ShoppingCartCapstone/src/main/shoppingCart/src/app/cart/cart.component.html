@@ -2,11 +2,12 @@
     <div  class="col-md-12">
         <h2 id="pageTitle">Welcome To Your Shopping Cart</h2>
     </div>
+  </div>
   <div class="row">
     <div class="col-12">
 
       <div class="row mb-2" *ngFor="let cartItem of cartItems; let i = index">
-        <div class="col-6">
+        <div id="productName" class="col-6">
           {{i + 1}}: {{cartItem.name}}
         </div>
         <div class="col-6">
@@ -89,4 +90,3 @@
       </div>
     </div>
   </div>
-</div>

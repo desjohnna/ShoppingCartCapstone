@@ -21,13 +21,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-    // var app = app.module('myApp', []);
-    // app.controller('myCtrl', function($scope) {
-    //   $scope.names = ["Emil", "Tobias", "Linus"];
-    // });
+
   }
 
-  //subscribe
   getProducts() {
     this.productSub = this.productService.getProductsFromServer().subscribe(
       (res: Product[]) => {
@@ -44,16 +40,7 @@ export class ProductsComponent implements OnInit {
  
 
 
-    //CHANGEING THE BUTTON TEXT AND COLOR AND SETTING TIME OUT FOR IT TO GO BACK
-    // document.getElementById('addToCartBtn').innerText = 'Added!'
-    // document.getElementById('addToCartBtn').style.backgroundColor = 'red'
-    // setTimeout(() => {
-    //   document.getElementById('addToCartBtn').innerText = 'Add to Cart'
-    //   document.getElementById('addToCartBtn').style.backgroundColor = ''
-      
-
-    // }, 2000);
-  }
+}
 
  
 

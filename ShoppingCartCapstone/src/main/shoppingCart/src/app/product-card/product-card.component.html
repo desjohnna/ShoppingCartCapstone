@@ -8,22 +8,24 @@
     <div class="card large card-panel hoverable">
         <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" [src]="product.imageUrl">
-            <a onclick="M.toast({html: 'Added to Cart!'})"
-                class="btn-floating halfway-fab waves-effect waves-light red"><i (click)="onAddProductToCart(product)"
-                    class="material-icons right tooltipped" data-position="right"
-                    data-tooltip="Add to Cart">add_shopping_cart</i></a>
+            <!-- <a onclick="M.toast({html: 'Added to Cart!'})"(click)="onAddProductToCart(product)"</a> -->
         </div>
 
         <div class="card-content">
             <h6>{{ product.name }}</h6>
 
             <hr>
-           
-                <p> {{ product.price | currency }}</p>
-            <br>
-            <p><button id="desBtn" class="text-darken-2 btn-flat waves-effect waves-teal activator">Product
-                    Description</button>
 
+
+            <p class="s1"> {{ product.price | currency }}</p>
+            <br>
+            <p class="s1"><button id="desBtn"
+                    class="text-darken-2 btn-flat waves-effect waves-teal activator">Description</button>
+            </p>
+            <p>
+                <button onclick="M.toast({html: 'Added to Cart!'})" id="cartBtn"
+                    class="text-darken-2 btn-flat waves-effect waves-teal" (click)="onAddProductToCart(product)">Add to
+                    Cart</button>
             </p>
         </div>
 

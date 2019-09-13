@@ -1,48 +1,18 @@
+<div id="parallax">
+    <div class=" container">
+        <h2 id="pageTitle">Online Market</h2>
 
 
-
-<div   id="parallax" >
-
-    <div class="row">
-            <h2 id="pageTitle">Online Market</h2>
-    
-        <div  class="col-md-12 container">
-
-            <!-- SEARCH INPUT BOX AND FILTER -->
-            <div  class="col-md-12 container">
+        <!-- SEARCH INPUT BOX AND FILTER -->
+        <div class="col-lg-6 container">
             <input id="searchBox" [(ngModel)]="filterText" placeholder="Search">
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3" *ngFor="let product of (productList | search: filterText); let i = index">
-                    <app-product-card [product]="product" [i]="i"></app-product-card>
-                    <p *ngIf="!product">product not found</p>
-                </div>
-                <!-- ADD A DROPDOWN SEARCH FILTER BY CATEGORY HERE -->
-                <!-- <div class="input-field col s12 m6" [(ngModel)]="filterCategory">
-                    <div class="select-wrapper"> 
-                        <input class="select-dropdown dropdown-trigger" type="text">
-                        <div class="input-field col s12"> -->
-                            <select>
-                                <option value="">Choose your option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                            <label>Materialize Select</label>
-                        </div>
-                    </div>
-                
-            
-            <!-- </div>
         </div>
-    </div>
-</div> -->
 
-<div class="row">
-    <div class="col-md-6 mb-3" *ngFor="let product of productList; let i = index">
         <div class="row">
-
+            <div *ngFor="let product of (productList | search: filterText); let i = index">
+                <app-product-card [product]="product" [i]="i"></app-product-card>
+                <p *ngIf="!product">product not found</p>
+            </div>
         </div>
     </div>
 </div>
-        </div>

@@ -16,12 +16,14 @@ export class ProductCardComponent implements OnInit {
   constructor(private productService: ProductsService, private cartService: CartService) { }
 
   ngOnInit() {
-  
-   
+
+
   }
 
   onAddProductToCart(product: Product) {
     this.productService.addProductToCart(product);
-//  this.cartService.getQuantity();
+    //  this.cartService.getQuantity();
+ 
   }
 }
+
