@@ -21,58 +21,15 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.getProductsInCart();
-    // this.getQuantity(this.cartItems)
-    // this.getQuantity()
+
   }
 
   getProductsInCart() {
     this.cartItems = this.productService.getProductsInCart();
     this.calculateTotal();
-    
-    // this.productService.getQuantity();
-    // this.quantity = this.productService.getQuantity();
-    // this.quantity = this.cartService.getQuantity()
-    // this.cartItems.forEach(i => {
-    //   if(i.name.toLowerCase(). )
-    // })
 
   }
 
-
-
-  // getQuantity() {
-  // setQuantity = function (quantity, relative) {
-
-
-    // var quantityInt = parseInt(quantity);
-    // if (quantityInt % 1 === 0) {
-    //   if (relative === true) {
-    //     this._quantity += quantityInt;
-    //   } else {
-    //     this._quantity = quantityInt;
-    //   }
-    //   if (this._quantity < 1) this._quantity = 1;
-
-    // } else {
-    //   this._quantity = 1;
-      // $log.info('Quantity must be an integer and was defaulted to 1');
-  //   }
-  //   this.quantity = this._quantity;
-
-  // };
-
-  // getQuantity = function () {
-  //   console.log(this._quantity)
-  //   console.log(this.quanity)
-  //   return this._quantity;
-
-
-  // };
-
-
-
-
-  // };
 
   calculateTotal() {
     this.total = 0;
@@ -84,7 +41,7 @@ export class CartComponent implements OnInit {
         //ROUND SALES TAX TO NEAREST .05
         parseFloat((Math.round(salesTax / .05) * 0.05).toFixed(2))
         //ADD SALES TAX TO TOTAL
-        this.total += i.price;
+        this.total += (i.price * i.quantity);
         this.total += salesTax;
 
         //CHECK IF PRODUCT IS IMPORTED
@@ -103,7 +60,8 @@ export class CartComponent implements OnInit {
         //IF PRODUCT IS TAX EXEMPT
       } else if (i.category == "books" || i.category == "food" || i.category == "medical supplies") {
         //SKIP ADDING SALES TAX AND ADD PRICE TO TOTAL
-        this.total += i.price
+        this.total += (i.price * i.quantity);
+      
 
         //CHECK IF PRODUCT IS IMPORTED
         if (i.isDomestic == false) {
@@ -120,8 +78,6 @@ export class CartComponent implements OnInit {
       }
     })
   }
-
-
 
   onPurchase() {
     this.productService.purchaseProducts(this.cartItems).subscribe(
@@ -149,6 +105,5 @@ export class CartComponent implements OnInit {
   onToggleRecieptDisplay() {
     this.displayReciept = !this.displayReciept;
   }
-    
 
 }

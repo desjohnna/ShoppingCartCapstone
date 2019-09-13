@@ -9,7 +9,6 @@ import { CartService } from '../cart.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  // @Input() quantity: number;
   @Input() product: Product;
   @Input() i: number;
 
@@ -20,7 +19,6 @@ export class ProductCardComponent implements OnInit {
 
   onAddProductToCart(product: Product) {
     this.productService.addProductToCart(product);
-    //  this.cartService.getQuantity(quantity);
  
   }
 }

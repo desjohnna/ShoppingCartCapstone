@@ -8,8 +8,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  
-  
+
+
   productList: Product[] = [];
   productSub: Subscription;
   filterText: string = '';
@@ -36,12 +36,8 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-
- 
-
-
 }
 
- 
+
 
 

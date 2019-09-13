@@ -2,14 +2,13 @@
     <div class=" container">
         <h2 id="pageTitle">Online Market</h2>
 
-
         <!-- SEARCH INPUT BOX AND FILTER -->
         <div class="col-lg-6 container">
             <input id="searchBox" [(ngModel)]="filterText" placeholder="Search">
         </div>
-
         <div class="row">
-            <div *ngFor="let product of (productList | search: filterText); let i = index">
+            <!-- FILTER WILL SEARCH IF INPUT MATCHED CATEGORY OR NAME -->
+            <div *ngFor="let product of (productList | search: filterText || filterCategory); let i = index">
                 <app-product-card [product]="product" [i]="i"></app-product-card>
                 <p *ngIf="!product">product not found</p>
             </div>

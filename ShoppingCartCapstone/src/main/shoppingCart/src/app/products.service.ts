@@ -14,8 +14,6 @@ export class Product {
   description?: string;
 
 
-
-
   constructor(id: number, name: string, price: number, isDomestic: boolean, category: string, imageUrl: string, quantity: number, description?: string) {
 
     this.id = id;
@@ -28,20 +26,6 @@ export class Product {
     this.quantity = quantity;
   }
 }
-
-// export class cartItem {
-//   product: Product;
-//   quantity: number;
-
-//   constructor(product: Product, quantity: number) {
-//     this.product = product;
-//     this.quantity = quantity;
-//   }
-
-
-// }
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -110,7 +94,6 @@ export class ProductsService {
   }
 
   addProductToCart(cartItem: Product): number {
-    // this.cartItems.push(cartItem)
 
     if (this.cartItems.includes(cartItem)) {
       cartItem.quantity += 1
@@ -119,7 +102,7 @@ export class ProductsService {
 
     } else {
       this.cartItems.push(cartItem)
-      
+
       cartItem.quantity = 1
       return cartItem.quantity;
 
@@ -130,35 +113,5 @@ export class ProductsService {
   purchaseProducts(cartItems: Product[]): Observable<Product[]> {
     return of(this.cartItems);
   }
-
-  // getQuantity(): number {
-
-
-  //   this.productsList.sort();
-
-  //   var currentItem = null;
-  //   var count = 0;
-
-  //   for (var i = 0; i < this.cartItems.length; i++) {
-  //     if (this.cartItems[i] != currentItem) {
-  //       // if (count > 0) {
-  //       // }
-  //       currentItem = this.cartItems[i];
-  //       this.productQuantity = count;
-  //       count = 1;
-
-  //     } else {
-  //       count++;
-  //     }
-  //   }
-  //   // if (count > 0) {
-
-  //   // }
-  //   this.productQuantity = count;
-  //   console.log(count)
-  //   return this.productQuantity
-  // }
-
-
 
 }

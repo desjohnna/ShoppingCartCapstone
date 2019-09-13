@@ -8,7 +8,7 @@ export class SearchPipe implements PipeTransform {
 
   transform(value: Product[], filterText: string): Product[] {
     let productsMatching = value.filter((product: Product) => {
-      if ( product.name.toLowerCase().includes(filterText.toLowerCase())) {
+      if (product.name.toLowerCase().includes(filterText.toLowerCase()) || product.category == filterText || product.description == filterText) {
         return true;
       }
       return false;
@@ -17,15 +17,4 @@ export class SearchPipe implements PipeTransform {
     return productsMatching;
   }
 
-  transform2(value: Product[], filterCategory: string): Product[] {
-    let productsMatching = value.filter((product: Product) => {
-      if (product.category == filterCategory) {
-        return true;
-      }
-      return false;
-    });
-
-    return productsMatching;
-  }
-// ADD FILTER FOR PRODUCT CATEGORY
 }
