@@ -6,17 +6,22 @@ import com.company.ShoppingCartCapstone.DTO.Products;
 import com.company.ShoppingCartCapstone.ServiceLayers.ProductsService;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,14 +29,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ProductControllerTest {
 
-    ProductsRepository productsRepo;
+    @Mock
+    @Autowired
+    ProductsRepository productsRepoMock;
+
+    @InjectMocks
+    ProductsService productsService;
 
     private MockMvc mockMvc;
-
-    @Mock
-    ProductsService mockProductServiceImpl;
 
     @InjectMocks
     ProductsController productsController;
@@ -65,6 +73,8 @@ public class ProductControllerTest {
         product2.setImageUrl("music@music.com");
         product2.setDescription("Cd of music");
         product2.setDomestic(false);
+
+        productsList = Arrays.asList(product1, product2);
     }
 
     @Test
@@ -74,15 +84,18 @@ public class ProductControllerTest {
 
     }
 
-   @Test
+    @Test
     public void testGetAllProducts() throws Exception {
-        when(mockProductServiceImpl.getAllProducts().thenReturn(productsList));
 
-        mockMvc.perform(get("/products"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].name", is(productsList.get(0).getName())));
+        List<Products> expectedList = Arrays.asList(product1, product2);
 
-        verify(mockProductServiceImpl).getAllProducts();
-   }
+        when(productsRepoMock.findAll()).thenReturn(productsList);
+
+//        mockMvc.perform(get("/products"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$", hasSize(2)))
+//                .andExpect(jsonPath("$[0].name", is(productsList.get(0).getName())));
+assertEquals(expectedList, productsService.getAllProducts());
+        verify(productsRepoMock).findAll();
+    }
 }
