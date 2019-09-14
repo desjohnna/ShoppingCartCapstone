@@ -48,9 +48,10 @@ public class ProductsServiceTest {
     }
 
     @Test
-    public void testMoviesFromMovieList() {
-        List<Products> expectedList = Arrays.asList(product1, product2);
-//        when(productRepoMock.getOne(1)).thenReturn(productsService.getAllProducts());
+    public void testGetAllProducts() {
+        List<Products> expectedList = Arrays.asList(product1, product2,product3);
+        when(productRepoMock.findAll()).thenReturn(productsList);
+
         assertEquals(expectedList, productsService.getAllProducts());
     }
 
