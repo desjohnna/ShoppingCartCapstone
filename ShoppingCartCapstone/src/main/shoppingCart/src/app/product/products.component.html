@@ -3,15 +3,26 @@
         <h2 id="pageTitle">Online Market</h2>
 
         <!-- SEARCH INPUT BOX AND FILTER -->
-        <div class="col-lg-6 container">
-            <input id="searchBox" [(ngModel)]="filterText" placeholder="Search">
+        <div class="container">
+        <div class="input-field col s6"><i class="material-icons prefix">search</i><input [(ngModel)]="filterText" id="icon_prefix" type="text" class="validate" ><label id="searchText" for="icon_prefix">Search</label>
         </div>
+    </div>
         <div class="row">
             <!-- FILTER WILL SEARCH IF INPUT MATCHED CATEGORY OR NAME -->
             <div *ngFor="let product of (productList | search: filterText || filterCategory); let i = index">
                 <app-product-card [product]="product" [i]="i"></app-product-card>
                 <p *ngIf="!product">product not found</p>
-            </div>
+           
+            
         </div>
     </div>
+
+           
+    </div>
+    
+    <div id="parallax2">
+            <!-- <div class="col-md-12 container">
+              
+            </div> -->
+          </div>
 </div>

@@ -1,7 +1,9 @@
-<div id="parallax" class="container">
-  <div class="col-md-12">
+<div id="parallax">
+  <div class="col-md-12 container">
+    <div id="cartBanner">
     <h2 id="pageTitle">Welcome To Your Shopping Cart</h2>
   </div>
+</div>
 </div>
 <div class="row">
   <div class="col-12">
@@ -13,24 +15,27 @@
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">PRODUCTS IN CART</span>
-              <table class="highlight">
+              <hr>
+              <table class="highlight centered responsive-table">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Product Name</th>
-                    <th>Product Price</th>
                     <th>Quantity</th>
+                    <th>Product Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let cartItem of cartItems; let i = index">
+                    <td><img class="productThumb" [src]= "cartItem.imageUrl"></td>
                     <td>{{ cartItem.name }}</td>
-                    <td>{{ cartItem.price | currency}}</td>
-                    <td>{{ cartItem.quantity }} </td>
                     <td>
-                      <div class="col-6">
-                        <button id="deleteBtn" class="btn float-right"
-                          (click)="onRemoveProductFromCart(i)">Delete</button>
-                      </div>
+                      <input type="number" value="cartItem.quantity"></td>
+                    <td>{{ cartItem.price | currency}}</td>
+                    
+                    <td>
+                       <i (click)="onRemoveProductFromCart(i)" class="material-icons btn-flat">delete_forever</i>
+                    
                     </td>
                   </tr>
                 </tbody>
@@ -43,11 +48,11 @@
                   </li>
                   <hr>
                   <li>
-                    Subtotal:
+                    Subtotal: 
                   </li>
                   <hr>
                   <li>
-                    Tax:
+                    Tax: {{ importDutyTotal }}
                   </li>
                   <hr>
                   <li>
@@ -60,24 +65,26 @@
           </div>
 
         </div>
-        <strong *ngIf="cartItems.length > 0">Total: {{ total | currency }}</strong>
-        <div class="row" *ngIf="cartItems.length === 0">
-          <div class="col-12">
-            <!-- Put box here with empty cart picture -->
-            <p>No items in cart.</p>
-          </div>
-        </div>
+        <!-- <strong *ngIf="cartItems.length > 0">Total: {{ total | currency }}</strong> -->
+       
 
         <div class="row">
           <div class="col-12">
             <button id="purchaseBtn" class="btn" (click)="onPurchase()" (click)="onToggleRecieptDisplay()"
-              [disabled]="cartItems.length === 0">Purchase</button>
+              [disabled]="cartItems.length === 0">Checkout</button>
             <p>{{infoText}}</p>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
+  <div id="emptyCartBox" class="row" *ngIf="cartItems.length === 0">
+      <div class="col-12">
+        <!-- Put box here with empty cart picture -->
+        <p>No items in cart.</p>
+      </div>
+    </div>
 
 
 

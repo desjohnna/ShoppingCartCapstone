@@ -17,9 +17,6 @@
 
 }
 
-/* #searchBox {
-    /* background-color: antiquewhite; */
-
 
 #pageTitle {
     text-align: center;
@@ -32,11 +29,24 @@
     background-color: rgba(0,0,0,0.6);
     filter: opacity(95%);
 
-     /* Set a specific height */
-  height: 500px;
+  height: 600px;
   width: 100%;
 
-  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+  #parallax2 {
+    background-image: url("../../assets/images/FarmersMarketBox.jpg");
+    background-color: rgba(0,0,0,0.6);
+    filter: opacity(95%);
+
+  height: 600px;
+  width: 100%;
+
+  
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -45,6 +55,15 @@
 
   .container {
       margin: 0 auto;
+  }
+
+  .prefix {
+      color: white;
+  }
+
+  #searchText {
+    font-weight: bold;
+    font-size: 20px;
   }
 
 

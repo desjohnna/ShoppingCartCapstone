@@ -15,6 +15,9 @@ export class CartComponent implements OnInit {
   total = 0;
   quantity = 0;
   displayReciept = false;
+  subtotal = 0;
+  importDutyTotal = 0;
+
 
   constructor(private productService: ProductsService, private cartService: CartService,
     private router: Router) { }
@@ -50,6 +53,8 @@ export class CartComponent implements OnInit {
           let importDuty = i.price * .05;
           //ROUND IMPORT DUTY TO NEAREST .05
           parseFloat((Math.round(importDuty / .05) * 0.05).toFixed(2))
+
+          this.importDutyTotal = importDuty;
           //ADD IMPORT DUTY TO TOTAL
           return this.total += importDuty;
           //IF PRODUCT IS DOMESTIC JUST RETURN TOTAL
@@ -69,6 +74,9 @@ export class CartComponent implements OnInit {
           let importDuty = i.price * .05;
           //ROUND IMPORT DUTY TO NEAREST .05
           parseFloat((Math.round(importDuty / .05) * 0.05).toFixed(2))
+
+          this.importDutyTotal = importDuty;
+          console.log(this.importDutyTotal)
           //ADD IMPORT DUTY TO TOTAL
           return this.total += importDuty;
           //IF PRODUCT IS DOMESTIC JUST RETURN TOTAL
@@ -105,5 +113,7 @@ export class CartComponent implements OnInit {
   onToggleRecieptDisplay() {
     this.displayReciept = !this.displayReciept;
   }
+
+  
 
 }

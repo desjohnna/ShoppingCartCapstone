@@ -12,31 +12,30 @@
         </div>
 
         <div class="card-content">
-            <h6>{{ product.name }}</h6>
+        <h5 class="productName">{{ product.name }}</h5>
+        
+        
+        <h5 class="price">{{ product.price | currency }}</h5>
+        <br>
+        <hr>
+    <p class="s1"><button id="desBtn"
+            class="text-darken-2 btn-flat waves-effect waves-teal activator">Description</button>
+            
+    </p>
+    <p>
+        <button onclick="M.toast({html: 'Added to Cart!'})" id="cartBtn"
+            class="text-darken-2 btn-flat waves-effect waves-teal" (click)="onAddProductToCart(product)">Add to
+            Cart</button>
+    </p>
+</div>
 
-            <hr>
+<!-- THIS IS WHAT DISPLAYS AFTER DESCRIPTION BUTTON IS CLICKED -->
 
-            <p class="s1"> {{ product.price | currency }}</p>
-            <br>
-            <p class="s1"><button id="desBtn"
-                    class="text-darken-2 btn-flat waves-effect waves-teal activator">Description</button>
-            </p>
-            <p>
-                <button onclick="M.toast({html: 'Added to Cart!'})" id="cartBtn"
-                    class="text-darken-2 btn-flat waves-effect waves-teal" (click)="onAddProductToCart(product)">Add to
-                    Cart</button>
-            </p>
-        </div>
-
-        <!-- THIS IS WHAT DISPLAYS AFTER DESCRIPTION BUTTON IS CLICKED -->
-
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ product.name }}<i
-                    class="material-icons right">close</i></span>
-            <hr>
-            <p class="flow-text">{{ product.description }}</p>
-        </div>
-    </div>
-
+<div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">{{ product.name }}<i class="material-icons right">close</i></span>
+    <hr>
+    <p class="flow-text">{{ product.description }}</p>
+</div>
+</div>
 
 </div>

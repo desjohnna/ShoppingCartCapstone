@@ -1,5 +1,5 @@
 #parallax {
-    background-image: url("../../assets/images/Carrots\ and\ leeks.jpg");
+    background-image: url("../../assets/images/produceMarket.jpg");
     background-color: rgba(0,0,0,0.6);
     filter: opacity(95%);
 
@@ -25,16 +25,52 @@
     background-color:  #52b453;
 }
 
-#deleteBtn {
-    background-color: rgb(190, 13, 13);
+.btn-flat {
+    color: rgb(146, 5, 5);
 }
 
-p{
-    color: white;
+p {
+    color: black;
     /* font-weight: bold; */
     font-size: 20px;
 }
 
 productName {
     font-size: 20px;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+#cartBanner {
+    background-color: gray;
+    height :300px;
+    filter: opacity(60%);
+    padding: 50px;
+    
+}
+
+.card-title {
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.productThumb {
+    
+max-height: 50px;
+max-width: 50px;
+}
+
+#emptyCartBox {
+    background-color: black;
+    height: 300px;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
 }
