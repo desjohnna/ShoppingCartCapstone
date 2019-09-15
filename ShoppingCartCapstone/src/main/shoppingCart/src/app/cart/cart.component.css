@@ -1,20 +1,16 @@
 #parallax {
     background-image: url("../../assets/images/produceMarket.jpg");
-    background-color: rgba(0,0,0,0.6);
-    filter: opacity(95%);
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 500px;
+    width: 100%;
+    /* parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-     /* Set a specific height */
-  height: 500px;
-  width: 100%;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
-
-  #pageTitle {
+#pageTitle {
     text-align: center;
     margin: 0;
     padding: 40px;
@@ -22,7 +18,7 @@
 }
 
 #purchaseBtn {
-    background-color:  #52b453;
+    background-color: #52b453;
 }
 
 .btn-flat {
@@ -31,7 +27,6 @@
 
 p {
     color: black;
-    /* font-weight: bold; */
     font-size: 20px;
 }
 
@@ -44,23 +39,19 @@ productName {
 }
 
 #cartBanner {
-    background-color: gray;
-    height :300px;
-    filter: opacity(60%);
+    background: rgba(10, 10, 10, 0.459);
+    height: 300px;
     padding: 50px;
-    
 }
 
 .card-title {
     text-align: center;
     font-weight: bold;
-
 }
 
 .productThumb {
-    
-max-height: 50px;
-max-width: 50px;
+    max-height: 50px;
+    max-width: 50px;
 }
 
 #emptyCartBox {
@@ -69,8 +60,7 @@ max-width: 50px;
     text-align: center;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

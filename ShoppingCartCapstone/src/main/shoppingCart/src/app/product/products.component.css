@@ -1,22 +1,22 @@
-
-
-#productName{
+#productName {
     font-size: 25px;
     font-weight: bold;
 }
 
-#productName p{
+#productName p {
     text-align: right;
     font-size: 20px;
     font-weight: initial;
     font-style: italic;
 }
 
-#pageTitle, #searchBox {
+#pageTitle, #searchBox, blockquote {
     color: white;
-
 }
 
+blockquote {
+    border-left: 5px solid #52b453;
+}
 
 #pageTitle {
     text-align: center;
@@ -24,46 +24,58 @@
     padding: 40px;
 }
 
+#titleBanner {
+    background: rgba(10, 10, 10, 0.459);
+    height: 300px;
+    padding: 50px;
+}
+
 #parallax {
     background-image: url("../../assets/images/FFM-Summer-Is-Here-Fresh-Fruits-Vegetables.jpg");
-    background-color: rgba(0,0,0,0.6);
-    filter: opacity(95%);
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 600px;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-  height: 600px;
-  width: 100%;
-
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
-
-  #parallax2 {
+#parallax2 {
     background-image: url("../../assets/images/FarmersMarketBox.jpg");
-    background-color: rgba(0,0,0,0.6);
-    filter: opacity(95%);
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 600px;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-  height: 600px;
-  width: 100%;
+.wrapper {
+    margin: -200px 100px;
+    overflow: auto;
+}
 
-  
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
+.prefix {
+    color: white;
+}
 
-  .container {
-      margin: 0 auto;
-  }
-
-  .prefix {
-      color: white;
-  }
-
-  #searchText {
+#searchText {
     font-weight: bold;
     font-size: 20px;
-  }
+}
 
+@media screen and (max-width: 768px) {
+    .wrapper {
+        margin: -200px 30px;
+    }
+}
 
+@media screen and (max-width: 640px) {
+    .wrapper {
+        margin: -200px auto;
+        overflow: auto;
+        padding: auto;
+    }
+}

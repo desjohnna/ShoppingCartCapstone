@@ -27,9 +27,6 @@
 
 }
 
-p {
-    /* float: left; */
-}
 
 .productName {
     float: left;
@@ -45,23 +42,90 @@ p {
 
 img {
     height: 350px;
-    background-position: cover; 
+    /* background-position: cover;  */
+
 }
 
-.large {
-    padding: 10px;
-    /* width: 300px; */
-}
 
 .card-content {
-    padding: 10px;
-    height: 100%;
+    /* padding: 5px; */
+    /* height: 100%; */
 }
 
 .card {
     /* background-color: grey; */
+    float: left;
+    margin: 5px;
+    width: 32.3%;
+    padding: 10px;
 }
+
 
 hr {
     margin: 30px 0px;
 }
+
+@media screen and (max-width: 1170px) {
+
+    .card {
+        
+            /* background-color: grey; */
+            float: left;
+            margin: 5px;
+            width: 30%;
+            padding: 10px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+
+        .card {
+            
+                /* background-color: grey; */
+                float: left;
+                margin: 5px;
+                width: 48.5%;
+                padding: 10px;
+            }
+
+            #desBtn{
+                background-color: #52b453;
+                float: left;
+                margin: auto;
+
+                
+            }
+            
+            #cartBtn {
+                background-color: rgb(197, 4, 4);
+                float: right;
+                margin: auto;
+            }
+        }
+
+            @media screen and (max-width: 640px) {
+
+                .card {
+                    
+                        /* background-color: grey; */
+                        /* float: left; */
+                        margin: 5px;
+                        width: 75%;
+                        padding: 10px;
+                    }
+        
+                    #desBtn{
+                        background-color: #52b453;
+                        float: left;
+                        margin: auto;
+        
+                        
+                    }
+                    
+                    #cartBtn {
+                        background-color: rgb(197, 4, 4);
+                        float: right;
+                        margin: auto;
+                    }
+                }
+        
