@@ -1,37 +1,44 @@
 <div id="parallax">
+
     <div class="container">
-        <!-- <h2 >Online Market</h2> -->
-        <div id="titleBanner">
-        <h2 id="pageTitle">Autumn Is Here!</h2>
-        <blockquote class="flow-text">Pre-Order you fresh fruits and vegetables, uniguely homemade foods and local goods with Frisco Fresh Online Market</blockquote>
-    </div>
-        <!-- SEARCH INPUT BOX AND FILTER -->
+
+
+<!-- SEARCH BOX -->
         <div class="container">
-            <div class="input-field col s6"><i class="material-icons prefix">search</i><input [(ngModel)]="filterText"
-                    id="icon_prefix" type="text" class="validate"><label id="searchText"
-                    for="icon_prefix">Search</label>
-            </div>
+            <nav>
+                <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input [(ngModel)]="filterText" id="search" type="search" placeholder="Keyword Search" required
+                                [ngModelOptions]="{standalone: true}">
+                            <label id="searchText" class="label-icon" for="search"><i
+                                    class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
         </div>
-        <div class="row">
-            <!-- FILTER WILL SEARCH IF INPUT MATCHED CATEGORY OR NAME -->
-            <!-- <div *ngFor="let product of (productList | search: filterText || filterCategory); let i = index">
-                <app-product-card [product]="product" [i]="i"></app-product-card> -->
 
+<!-- PRODUCT PAGE HEADING -->
+        <div id="titleBanner">
+            <h2 id="pageTitle">Autumn Is Here!</h2>
+            <blockquote class="flow-text">Pre-Order you fresh fruits and vegetables, uniguely homemade foods and local
+                goods with Frisco Fresh Online Market</blockquote>
         </div>
     </div>
-</div>
+</div> 
 
-<div class="wrapper">
+
+<!-- PRODUCT LIST RENDERING -->
+<div class="row wrapper">
     <div *ngFor="let product of (productList | search: filterText || filterCategory); let i = index">
 
         <app-product-card [product]="product" [i]="i"></app-product-card>
-        
+
     </div>
 </div>
 
-
+<!-- FOOTER PARALLAX -->
 <div id="parallax2">
-    <!-- <div class="col-md-12 container">
-              
-            </div> -->
 </div>
