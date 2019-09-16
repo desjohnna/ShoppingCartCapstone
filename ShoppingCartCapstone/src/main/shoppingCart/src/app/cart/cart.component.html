@@ -31,8 +31,9 @@
                     <td><img class="productThumb" [src]="cartItem.imageUrl"></td>
                     <td>{{ cartItem.name }}</td>
                     <td>
-                      <input type="number" min="0" [value]="cartItem.quantity"></td>
-                    <td>{{ cartItem.price | currency}}</td>
+                      <input id="quantityInput" type="number" min="0" [(ngModel)]="cartItem.quantity"></td>
+
+                    <td>{{ cartItem.price * cartItem.quantity | currency}}</td>
 
                     <td>
                       <i (click)="onRemoveProductFromCart(i)" class="material-icons btn-flat">delete_forever</i>
@@ -43,23 +44,13 @@
               </table>
               <div class="container">
                 <ul>
-                  <!-- <li>
-                    <!-- ADD MOMENT COMPONENT AND PIPE FOR DATE -->
-                  <!-- Transaction Date:
-                  </li> -->
-                  <!-- <hr> -->
-                  <li>
-                      
-
-                    <!-- Subtotal: {{ subtotal | currency }} -->
-                  </li>
                   <hr>
                   <li>
                     Tax: {{ salesTax | currency }}
                   </li>
                   <hr>
                   <li>
-                   Import Duty: {{ importDutyTotal | currency }}
+                    Import Duty: {{ importDutyTotal | currency }}
                   </li>
                   <hr>
                   <li>
@@ -67,43 +58,30 @@
                   </li>
                 </ul>
               </div>
+
+              <!-- PURCHASE BUTTON AND  -->
+              <button id="purchaseBtn" class="btn" (click)="onPurchase()" (click)="onToggleRecieptDisplay()"
+                [disabled]="cartItems.length === 0">Checkout</button>
+              <p class="flow-text">{{infoText}}</p>
             </div>
-
-            <div class="card-action">
-              <!--MAKE AN OPTION TO PRINT OR EMAIL -->
-
-              <!-- <div class="row"> -->
-                <!-- <div class="col-12"> -->
-                  <button id="purchaseBtn" class="btn" (click)="onPurchase()" (click)="onToggleRecieptDisplay()"
-                    [disabled]="cartItems.length === 0">Checkout</button>
-                  <p class="flow-text">{{infoText}}</p>
-                </div>
-              <!-- </div> -->
-            <!-- </div> -->
           </div>
-
         </div>
-        <!-- <strong *ngIf="cartItems.length > 0">Total: {{ total | currency }}</strong> -->
-
-
-
       </div>
     </div>
-
   </div>
+
+  <!-- WHEN CART IS EMPTY DISPLAY -->
   <div id="emptyCartBox" class="row" *ngIf="cartItems.length === 0">
     <div class="col-12">
       <!-- Put box here with empty cart picture -->
-      <p>No items in cart.</p>
+      <p class="flow-text">No items in cart.</p>
     </div>
   </div>
 
 
 
 
-  <!-- CARD RECIEPT NEED TO ADD WHEN PURCHASE BUTTON CLICKED TO POP UP -->
-
-
+  <!-- CARD RECIEPT DISPLAY WHEN PURCHASE BUTTON CLICKED -->
 
   <div *ngIf="displayReciept" class="row">
     <div class="col s12 m6">
@@ -129,23 +107,22 @@
             </tbody>
           </table>
           <ul>
+            <hr>
             <li>
-              <!-- ADD MOMENT COMPONENT AND PIPE FOR DATE -->
-              Transaction Date:
+              Subtotal: {{ total - (salesTax + importDutyTotal) }}
             </li>
             <hr>
             <li>
-              Subtotal:
+              Tax: {{ importDutyTotal | currency }}
             </li>
             <hr>
             <li>
-              Tax:
+              Tax: {{ salesTax | currency }}
             </li>
             <hr>
             <li>
               Total: {{ total | currency }}
             </li>
-
           </ul>
 
 

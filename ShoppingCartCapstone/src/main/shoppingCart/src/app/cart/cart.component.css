@@ -20,6 +20,7 @@
 
 #purchaseBtn {
     background-color: #52b453;
+    float: right;
 }
 
 .btn-flat {
@@ -37,6 +38,7 @@ productName {
 
 .container {
     margin: 0 auto;
+   
 }
 
 #cartBanner {
@@ -60,11 +62,17 @@ productName {
     text-align: center;
 }
 
-input {
-    width: 20px;
+#quantityInput {
+    max-width: 50px;
+    background-color: whitesmoke;
+    max-height: 30px;
 }
 
 li {
     font-size: 15px;
     font-weight: bold;
+}
+
+.card-content {
+    clear: both;
 }

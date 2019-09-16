@@ -15,9 +15,9 @@ export class CartComponent implements OnInit {
   total = 0;
   quantity = 0;
   displayReciept = false;
-  subtotal = 0;
   importDutyTotal = 0;
   salesTax = 0;
+
 
 
   constructor(private productService: ProductsService, private cartService: CartService,
@@ -70,8 +70,6 @@ export class CartComponent implements OnInit {
       } else if (i.category == "books" || i.category == "food" || i.category == "medical supplies") {
         //SKIP ADDING SALES TAX AND ADD PRICE TO TOTAL
         this.total += (i.price * i.quantity);
-
-
         //CHECK IF PRODUCT IS IMPORTED
         if (i.isDomestic == false) {
           //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
@@ -94,8 +92,7 @@ export class CartComponent implements OnInit {
 
   calculateImportDutyTotal() {
 
-
-    this.importDutyTotal = 0;
+    let totalImportDuty = 0;
 
     this.cartItems.forEach(i => {
       //CHECK IF PRODUCT IS IMPORTED
@@ -105,12 +102,10 @@ export class CartComponent implements OnInit {
         //ROUND IMPORT DUTY TO NEAREST .05
         parseFloat((Math.round(this.importDutyTotal / .05) * 0.05).toFixed(2))
 
-        // this.importDutyTotal = importDuty;
-        console.log(this.importDutyTotal);
-        // console.log(importDuty);
+        this.importDutyTotal = totalImportDuty;
 
         return this.importDutyTotal;
-        //IF PRODUCT IS DOMESTIC JUST RETURN TOTAL
+        //IF PRODUCT IS DOMESTIC JUST RETURN IMPORT DUTY WHICH IS SET AT 0 ALREADY
       } else if (i.isDomestic == true) {
         return this.importDutyTotal;
       }
@@ -120,10 +115,9 @@ export class CartComponent implements OnInit {
 
   calculateTax() {
 
-    // this.cartItems.reduce(){
-
+    let totalTax = 0;
     this.cartItems.forEach(i => {
-      let totalTax = 0;
+
       // IF PRODUCT IS TAX EXEMPT
       if (i.category == "books" || i.category == "food" || i.category == "medical supplies") {
         // SKIP ADDING SALES TAX AND ADD PRICE TO TOTAL
@@ -135,28 +129,14 @@ export class CartComponent implements OnInit {
         parseFloat((Math.round(this.salesTax / .05) * 0.05).toFixed(2))
         // MULTIPLY TAX BY QUANTITY TO GET TOTAL
         totalTax += (this.salesTax * i.quantity);
+        console.log(totalTax);
         this.salesTax += totalTax;
 
-
-        //  ADD ALL PRODUCTS TAX TOGETHER
-
+        // console.log(this.salesTax);
         return this.salesTax;
       }
     })
   }
-  
-
-  // var tax = this.cartItems.reduce(function(tax,product){
-  //   this.cartItems.forEach(t => {
-  //     tax += t.price * t.PERCENTAGE/100;
-  //   });
-  //   this.salesTax = tax;
-  //   return this.salesTax;
-  // },0);
-
-  
-
-
 
 
   onPurchase() {
@@ -185,7 +165,4 @@ export class CartComponent implements OnInit {
   onToggleRecieptDisplay() {
     this.displayReciept = !this.displayReciept;
   }
-
-
-
 }
