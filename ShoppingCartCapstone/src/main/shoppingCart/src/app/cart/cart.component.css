@@ -8,7 +8,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     padding: 60px 0px;
 }
 
@@ -30,7 +29,6 @@
 p {
     color: black;
     font-size: 40px;
-   
 }
 
 productName {
@@ -62,7 +60,11 @@ productName {
     text-align: center;
 }
 
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input {
+    width: 20px;
+}
+
+li {
+    font-size: 15px;
+    font-weight: bold;
 }

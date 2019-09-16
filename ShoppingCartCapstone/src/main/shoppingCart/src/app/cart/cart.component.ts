@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   displayReciept = false;
   subtotal = 0;
   importDutyTotal = 0;
+  salesTax = 0;
 
 
   constructor(private productService: ProductsService, private cartService: CartService,
@@ -30,6 +31,8 @@ export class CartComponent implements OnInit {
   getProductsInCart() {
     this.cartItems = this.productService.getProductsInCart();
     this.calculateTotal();
+    this.calculateImportDutyTotal();
+    this.calculateTax();
 
   }
 
@@ -39,6 +42,7 @@ export class CartComponent implements OnInit {
     this.cartItems.forEach(i => {
       // CHECK THAT PRODUCT IS NOT TAX EXEMPT
       if (i.category != "books" && i.category != "food" && i.category != "medical supplies") {
+
         // IF PRODUCT IS NOT TAX EXEMPT APPLY SALES TAX
         let salesTax = i.price * .10;
         //ROUND SALES TAX TO NEAREST .05
@@ -66,7 +70,7 @@ export class CartComponent implements OnInit {
       } else if (i.category == "books" || i.category == "food" || i.category == "medical supplies") {
         //SKIP ADDING SALES TAX AND ADD PRICE TO TOTAL
         this.total += (i.price * i.quantity);
-      
+
 
         //CHECK IF PRODUCT IS IMPORTED
         if (i.isDomestic == false) {
@@ -81,11 +85,79 @@ export class CartComponent implements OnInit {
           return this.total += importDuty;
           //IF PRODUCT IS DOMESTIC JUST RETURN TOTAL
         } else if (i.isDomestic == true) {
+          console.log(this.total)
           return this.total
         }
       }
     })
   }
+
+  calculateImportDutyTotal() {
+
+
+    this.importDutyTotal = 0;
+
+    this.cartItems.forEach(i => {
+      //CHECK IF PRODUCT IS IMPORTED
+      if (i.isDomestic == false) {
+        //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
+        this.importDutyTotal = i.price * .05;
+        //ROUND IMPORT DUTY TO NEAREST .05
+        parseFloat((Math.round(this.importDutyTotal / .05) * 0.05).toFixed(2))
+
+        // this.importDutyTotal = importDuty;
+        console.log(this.importDutyTotal);
+        // console.log(importDuty);
+
+        return this.importDutyTotal;
+        //IF PRODUCT IS DOMESTIC JUST RETURN TOTAL
+      } else if (i.isDomestic == true) {
+        return this.importDutyTotal;
+      }
+    })
+  }
+
+
+  calculateTax() {
+
+    // this.cartItems.reduce(){
+
+    this.cartItems.forEach(i => {
+      let totalTax = 0;
+      // IF PRODUCT IS TAX EXEMPT
+      if (i.category == "books" || i.category == "food" || i.category == "medical supplies") {
+        // SKIP ADDING SALES TAX AND ADD PRICE TO TOTAL
+        return this.salesTax = 0;
+      } else {
+        // IF PRODUCT IS NOT TAX EXEMPT APPLY SALES TAX
+        this.salesTax = i.price * .10;
+        // ROUND SALES TAX TO NEAREST .05
+        parseFloat((Math.round(this.salesTax / .05) * 0.05).toFixed(2))
+        // MULTIPLY TAX BY QUANTITY TO GET TOTAL
+        totalTax += (this.salesTax * i.quantity);
+        this.salesTax += totalTax;
+
+
+        //  ADD ALL PRODUCTS TAX TOGETHER
+
+        return this.salesTax;
+      }
+    })
+  }
+  
+
+  // var tax = this.cartItems.reduce(function(tax,product){
+  //   this.cartItems.forEach(t => {
+  //     tax += t.price * t.PERCENTAGE/100;
+  //   });
+  //   this.salesTax = tax;
+  //   return this.salesTax;
+  // },0);
+
+  
+
+
+
 
   onPurchase() {
     this.productService.purchaseProducts(this.cartItems).subscribe(
@@ -114,6 +186,6 @@ export class CartComponent implements OnInit {
     this.displayReciept = !this.displayReciept;
   }
 
-  
+
 
 }
