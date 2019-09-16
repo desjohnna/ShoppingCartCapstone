@@ -21,6 +21,18 @@
 #purchaseBtn {
     background-color: #52b453;
     float: right;
+   /* margin-right: 100px; */
+
+}
+
+#recalcBtn {
+   background-color: rgb(146, 5, 5);
+   float: left;
+   /* margin-left: 100px; */
+}
+
+.btn-container {
+margin: 50px;
 }
 
 .btn-flat {
@@ -75,4 +87,5 @@ li {
 
 .card-content {
     clear: both;
+    overflow: auto;
 }

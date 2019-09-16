@@ -15,8 +15,10 @@ export class CartComponent implements OnInit {
   total = 0;
   quantity = 0;
   displayReciept = false;
+  displayCartItems = true;
   importDutyTotal = 0;
   salesTax = 0;
+  dutyTotal = 0;
 
 
 
@@ -26,13 +28,15 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.getProductsInCart();
 
+
   }
 
   getProductsInCart() {
     this.cartItems = this.productService.getProductsInCart();
-    this.calculateTotal();
+    
     this.calculateImportDutyTotal();
     this.calculateTax();
+    this.calculateTotal();
 
   }
 
@@ -78,7 +82,7 @@ export class CartComponent implements OnInit {
           parseFloat((Math.round(importDuty / .05) * 0.05).toFixed(2))
 
           this.importDutyTotal = importDuty;
-          console.log(this.importDutyTotal)
+          // console.log(this.importDutyTotal)
           //ADD IMPORT DUTY TO TOTAL
           return this.total += importDuty;
           //IF PRODUCT IS DOMESTIC JUST RETURN TOTAL
@@ -98,16 +102,16 @@ export class CartComponent implements OnInit {
       //CHECK IF PRODUCT IS IMPORTED
       if (i.isDomestic == false) {
         //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
-        this.importDutyTotal = i.price * .05;
+        totalImportDuty = i.price * .05;
         //ROUND IMPORT DUTY TO NEAREST .05
-        parseFloat((Math.round(this.importDutyTotal / .05) * 0.05).toFixed(2))
+        parseFloat((Math.round(totalImportDuty / .05) * 0.05).toFixed(2))
 
-        this.importDutyTotal = totalImportDuty;
+        this.dutyTotal = totalImportDuty;
 
-        return this.importDutyTotal;
+        return this.dutyTotal;
         //IF PRODUCT IS DOMESTIC JUST RETURN IMPORT DUTY WHICH IS SET AT 0 ALREADY
       } else if (i.isDomestic == true) {
-        return this.importDutyTotal;
+        return this.dutyTotal;
       }
     })
   }
@@ -129,23 +133,25 @@ export class CartComponent implements OnInit {
         parseFloat((Math.round(this.salesTax / .05) * 0.05).toFixed(2))
         // MULTIPLY TAX BY QUANTITY TO GET TOTAL
         totalTax += (this.salesTax * i.quantity);
-        console.log(totalTax);
+        // console.log(totalTax);
         this.salesTax += totalTax;
 
         // console.log(this.salesTax);
-        return this.salesTax;
+        // return this.salesTax;
       }
+      // console.log(this.salesTax);
     })
+  //  console.log(this.salesTax);
   }
 
 
   onPurchase() {
     this.productService.purchaseProducts(this.cartItems).subscribe(
       (res: any) => {
-        this.productService.emptyCart();
-        this.cartItems = [];
+        // this.productService.emptyCart();
+        // this.cartItems = [];
 
-        this.infoText = "Thank you for your purchase!"
+        this.infoText = "Thank you for your pre-order!"
 
         setTimeout(() => {
           this.router.navigate(['/product'])
@@ -160,9 +166,12 @@ export class CartComponent implements OnInit {
   onRemoveProductFromCart(i: number) {
     this.productService.deleteProductFromCart(i)
     this.getProductsInCart();
+    
+
   }
 
   onToggleRecieptDisplay() {
     this.displayReciept = !this.displayReciept;
+    this.displayCartItems = !this.displayCartItems;
   }
 }

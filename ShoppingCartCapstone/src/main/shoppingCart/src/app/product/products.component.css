@@ -80,7 +80,10 @@ blockquote {
 
 
 
-
+#search {
+    border: #52b453;
+    border-width:5px;
+}
 
 
 

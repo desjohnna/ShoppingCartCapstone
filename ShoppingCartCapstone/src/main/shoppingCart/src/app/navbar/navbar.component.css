@@ -3,6 +3,11 @@
 }
 nav {
     background-color: #52b453;
+   
+}
+
+.brand-logo {
+    font-size: 1.5rem;
 }
 
 .nav-wrapper {
