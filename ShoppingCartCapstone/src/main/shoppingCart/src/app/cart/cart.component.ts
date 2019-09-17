@@ -110,7 +110,7 @@ export class CartComponent implements OnInit {
         // ELSE IF PRODUCT IS DOMESTIC JUST RETURN IMPORT DUTY WHICH IS SET AT 0 ALREADY
       }
     })
-    this.dutyTotal = totalImportDuty;
+    return this.dutyTotal = totalImportDuty;
   }
 
 
@@ -133,6 +133,7 @@ export class CartComponent implements OnInit {
       }
     })
     this.salesTax = totalTax;
+    return this.salesTax;
   }
 
 
