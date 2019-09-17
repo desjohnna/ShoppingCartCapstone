@@ -65,11 +65,12 @@
               </div>
 
               <div class="container btn-container">
-                <!-- RECALCULATE TOTAL BUTTON -->
-                <!-- <button id="recalcBtn" class="btn" (click)="calculateTotal()">Recalculate Total</button> -->
+                <!-- CONTINUE SHOPPING BUTTON -->
+                <a id="shopBtn" href="#" routerLink="/products" routerLinkActive="link-active"
+                  class="btn waves-effect waves-light red"><i class="material-icons left">add_shopping_cart</i>Continue Shopping</a>
 
                 <!-- PURCHASE BUTTON -->
-                <button id="purchaseBtn" class="btn" (click)="onPurchase()" (click)="onToggleRecieptDisplay()"
+                <button id="purchaseBtn" class="btn waves-effect waves-light" (click)="onPurchase()" (click)="onToggleRecieptDisplay()"
                   [disabled]="cartItems.length === 0">Checkout</button>
               </div>
             </div>
@@ -146,6 +147,8 @@
       <p class="flow-text">Shopping Cart is Empty</p>
     </div>
   </div>
-  <div id="shopProductsBtn" class="container">
-    <button>Shop Products</button>
+  <div *ngIf="cartItems.length === 0" id="shopProductsContainer" class="container">
+
+    <a id="shopProductsBtn" href="#" routerLink="/products" routerLinkActive="link-active" class="btn waves-effect waves-light"><i
+        class="material-icons left">add_shopping_cart</i>Shop Products</a>
   </div>
