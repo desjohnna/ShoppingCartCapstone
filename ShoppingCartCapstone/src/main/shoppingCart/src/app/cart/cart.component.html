@@ -31,7 +31,8 @@
                     <td><img class="productThumb" [src]="cartItem.imageUrl"></td>
                     <td>{{ cartItem.name }}</td>
                     <td>
-                      <input id="quantityInput" type="number" min="0" [(ngModel)]="cartItem.quantity"> </td>
+                      <input (change)="calculateTotal()" id="quantityInput" type="number" min="0"
+                        [(ngModel)]="cartItem.quantity"> </td>
 
                     <td>{{ cartItem.price * cartItem.quantity | currency}}</td>
 
@@ -50,6 +51,10 @@
                   </li>
                   <hr>
                   <li>
+                   Impory Duty: {{ dutyTotal | currency }}
+                  </li>
+                  <hr>
+                  <li>
                     Tax: {{ salesTax | currency }}
                   </li>
                   <hr>
@@ -61,9 +66,9 @@
 
               <div class="container btn-container">
                 <!-- RECALCULATE TOTAL BUTTON -->
-                <button id="recalcBtn" class="btn" (click)="calculateTotal()">Recalculate Total</button>
+                <!-- <button id="recalcBtn" class="btn" (click)="calculateTotal()">Recalculate Total</button> -->
 
-                <!-- PURCHASE BUTTON AND  -->
+                <!-- PURCHASE BUTTON -->
                 <button id="purchaseBtn" class="btn" (click)="onPurchase()" (click)="onToggleRecieptDisplay()"
                   [disabled]="cartItems.length === 0">Checkout</button>
               </div>
@@ -107,6 +112,10 @@
                   <hr>
                   <li>
                     Subtotal: {{ total - (salesTax + importDutyTotal) | currency }}
+                  </li>
+                  <hr>
+                  <li>
+                    Import Duty: {{ dutyTotal | currency }}
                   </li>
                   <hr>
                   <li>

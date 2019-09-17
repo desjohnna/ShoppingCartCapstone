@@ -32,6 +32,7 @@
 
 <!-- PRODUCT LIST RENDERING -->
 <div class="row wrapper">
+     
     <div *ngFor="let product of (productList | search: filterText || filterCategory); let i = index">
 
         <app-product-card [product]="product" [i]="i"></app-product-card>

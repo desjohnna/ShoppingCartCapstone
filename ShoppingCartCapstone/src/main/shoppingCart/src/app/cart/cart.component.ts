@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
 
   getProductsInCart() {
     this.cartItems = this.productService.getProductsInCart();
-    
+
     this.calculateImportDutyTotal();
     this.calculateTax();
     this.calculateTotal();
@@ -50,7 +50,7 @@ export class CartComponent implements OnInit {
         // IF PRODUCT IS NOT TAX EXEMPT APPLY SALES TAX
         let salesTax = i.price * .10;
         //ROUND SALES TAX TO NEAREST .05
-        parseFloat((Math.round(salesTax / .05) * 0.05).toFixed(2))
+        salesTax = parseFloat((Math.round(salesTax / .05) * 0.05).toFixed(2))
         //ADD SALES TAX TO TOTAL
         this.total += (i.price * i.quantity);
         this.total += salesTax;
@@ -60,7 +60,7 @@ export class CartComponent implements OnInit {
           //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
           let importDuty = i.price * .05;
           //ROUND IMPORT DUTY TO NEAREST .05
-          parseFloat((Math.round(importDuty / .05) * 0.05).toFixed(2))
+          importDuty = parseFloat((Math.round(importDuty / .05) * 0.05).toFixed(2))
 
           this.importDutyTotal = importDuty;
           //ADD IMPORT DUTY TO TOTAL
@@ -102,18 +102,15 @@ export class CartComponent implements OnInit {
       //CHECK IF PRODUCT IS IMPORTED
       if (i.isDomestic == false) {
         //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
-        totalImportDuty = i.price * .05;
+      let dutyTax = (i.price * i.quantity) * .05;
         //ROUND IMPORT DUTY TO NEAREST .05
-        parseFloat((Math.round(totalImportDuty / .05) * 0.05).toFixed(2))
-
-        this.dutyTotal = totalImportDuty;
-
-        return this.dutyTotal;
-        //IF PRODUCT IS DOMESTIC JUST RETURN IMPORT DUTY WHICH IS SET AT 0 ALREADY
-      } else if (i.isDomestic == true) {
-        return this.dutyTotal;
+        totalImportDuty = parseFloat((Math.round(totalImportDuty / .05) * 0.05).toFixed(2))
+        //ASSIGN TO CLASS VARIABLE
+        totalImportDuty += dutyTax;
+        // ELSE IF PRODUCT IS DOMESTIC JUST RETURN IMPORT DUTY WHICH IS SET AT 0 ALREADY
       }
     })
+    this.dutyTotal = totalImportDuty;
   }
 
 
@@ -125,23 +122,17 @@ export class CartComponent implements OnInit {
       // IF PRODUCT IS TAX EXEMPT
       if (i.category == "books" || i.category == "food" || i.category == "medical supplies") {
         // SKIP ADDING SALES TAX AND ADD PRICE TO TOTAL
-        return this.salesTax = 0;
-      } else {
-        // IF PRODUCT IS NOT TAX EXEMPT APPLY SALES TAX
-        this.salesTax = i.price * .10;
-        // ROUND SALES TAX TO NEAREST .05
-        parseFloat((Math.round(this.salesTax / .05) * 0.05).toFixed(2))
-        // MULTIPLY TAX BY QUANTITY TO GET TOTAL
-        totalTax += (this.salesTax * i.quantity);
-        // console.log(totalTax);
-        this.salesTax += totalTax;
 
-        // console.log(this.salesTax);
-        // return this.salesTax;
+      } else {
+
+        // IF PRODUCT IS NOT TAX EXEMPT APPLY SALES TAX
+        let tax = (i.price * i.quantity) * .10;
+
+        tax = parseFloat((Math.round(tax / .05) * 0.05).toFixed(2));
+        totalTax += tax;
       }
-      // console.log(this.salesTax);
     })
-  //  console.log(this.salesTax);
+    this.salesTax = totalTax;
   }
 
 
@@ -166,12 +157,14 @@ export class CartComponent implements OnInit {
   onRemoveProductFromCart(i: number) {
     this.productService.deleteProductFromCart(i)
     this.getProductsInCart();
-    
+
 
   }
 
   onToggleRecieptDisplay() {
     this.displayReciept = !this.displayReciept;
     this.displayCartItems = !this.displayCartItems;
+
+    // setTimeout(onToggleReciptDisplay(){ this.cartItems = []; }, 3000);
   }
 }
