@@ -4,10 +4,6 @@ nav {
 
 }
 
-
-
-
-
 #productName {
     font-size: 25px;
     font-weight: bold;
@@ -22,16 +18,19 @@ nav {
 
 #pageTitle, #searchBox, blockquote {
     color: white;
+    font-family: 'Amatic SC', cursive;
 }
 
 blockquote {
     border-left: 5px solid #52b453;
+    font-size: 30px;
 }
 
 #pageTitle {
     text-align: center;
     margin: 0;
-    padding: 40px;
+    padding: 20px;
+    font-size: 80px;
 }
 
 #titleBanner {

@@ -49,10 +49,10 @@
                   <li>
                     Subtotal: {{ total - (salesTax + importDutyTotal  ) | currency }}
                   </li>
-                  <hr>
+                  <!-- <hr>
                   <li>
                    Impory Duty: {{ dutyTotal | currency }}
-                  </li>
+                  </li> -->
                   <hr>
                   <li>
                     Tax: {{ salesTax | currency }}
@@ -113,10 +113,10 @@
                   <li>
                     Subtotal: {{ total - (salesTax + importDutyTotal) | currency }}
                   </li>
-                  <hr>
+                  <!-- <hr>
                   <li>
                     Import Duty: {{ dutyTotal | currency }}
-                  </li>
+                  </li> -->
                   <hr>
                   <li>
                     Tax: {{ salesTax | currency }}
@@ -143,7 +143,9 @@
   <!-- WHEN CART IS EMPTY DISPLAY -->
   <div id="emptyCartBox" class="row" *ngIf="cartItems.length === 0">
     <div class="col-12">
-      <!-- Put box here with empty cart picture -->
-      <p class="flow-text">No items in cart.</p>
+      <p class="flow-text">Shopping Cart is Empty</p>
     </div>
+  </div>
+  <div id="shopProductsBtn" class="container">
+    <button>Shop Products</button>
   </div>

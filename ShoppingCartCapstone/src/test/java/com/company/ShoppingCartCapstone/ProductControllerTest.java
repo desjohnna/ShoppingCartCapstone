@@ -19,14 +19,10 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -90,12 +86,7 @@ public class ProductControllerTest {
         List<Products> expectedList = Arrays.asList(product1, product2);
 
         when(productsRepoMock.findAll()).thenReturn(productsList);
-
-//        mockMvc.perform(get("/products"))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", hasSize(2)))
-//                .andExpect(jsonPath("$[0].name", is(productsList.get(0).getName())));
-assertEquals(expectedList, productsService.getAllProducts());
+        assertEquals(expectedList, productsService.getAllProducts());
         verify(productsRepoMock).findAll();
     }
 }

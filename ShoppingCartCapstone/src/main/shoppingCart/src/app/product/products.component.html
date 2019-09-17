@@ -34,9 +34,12 @@
 <div class="row wrapper">
      
     <div *ngFor="let product of (productList | search: filterText || filterCategory); let i = index">
-
+        <!-- <div *ngIf="productList.length < 1" class="container">
+            <p >product not found</p>
+        </div> -->
+            
         <app-product-card [product]="product" [i]="i"></app-product-card>
-
+        
     </div>
 </div>
 

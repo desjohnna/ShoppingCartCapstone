@@ -11,8 +11,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Optional;
+import java.util.List;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -70,12 +71,14 @@ public class DAOTest {
     public void DeleteProductTest() {
 
         productsDao.save(product1);
+//        productsDao.save(product2);
 
-        productsDao.deleteById(product1.getId());
+        productsDao.delete(product1);
 
-        Optional<Products> fromRepo = productsDao.findById(product1.getId());
+        List<Products> fromRepo = productsDao.findAll();
 
-        assertFalse(fromRepo.isPresent());
+        assertThat(fromRepo, hasSize(1));
+
     }
 
 }
