@@ -67,7 +67,7 @@
               <div class="container btn-container">
                 <!-- CONTINUE SHOPPING BUTTON -->
                 <a id="shopBtn" href="#" routerLink="/products" routerLinkActive="link-active"
-                  class="btn waves-effect waves-light red"><i class="material-icons left">add_shopping_cart</i>Continue Shopping</a>
+                  class="btn waves-effect waves-light"><i class="material-icons left">add_shopping_cart</i>Continue Shopping</a>
 
                 <!-- PURCHASE BUTTON -->
                 <button id="purchaseBtn" class="btn waves-effect waves-light" (click)="onPurchase()" (click)="onToggleRecieptDisplay()"
@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="container">
-            <p class="flow-text">{{infoText}}</p>
+            <p id="thankYouText" class="flow-text">{{infoText}}</p>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
 
       <div *ngIf="displayReciept" class="row">
         <div class="container">
-          <div class="card #78909c blue-grey lighten-1">
+          <div class="card #424242 grey darken-2">
             <div class="card-content white-text">
               <span class="card-title">ORDER RECEIPT</span>
               <hr>

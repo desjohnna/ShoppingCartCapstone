@@ -120,14 +120,12 @@ export class CartComponent implements OnInit {
     this.cartItems.forEach(i => {
 
       // IF PRODUCT IS TAX EXEMPT
-      if (i.category == "books" || i.category == "food" || i.category == "medical supplies") {
-        // SKIP ADDING SALES TAX AND ADD PRICE TO TOTAL
-
-      } else {
+      if (i.category == "music" || i.category == "clothes" || i.category == "luxury items") {
 
         // IF PRODUCT IS NOT TAX EXEMPT APPLY SALES TAX
         let tax = (i.price * i.quantity) * .10;
 
+        // ROUND TO NEAREST .05
         tax = parseFloat((Math.round(tax / .05) * 0.05).toFixed(2));
         totalTax += tax;
       }
