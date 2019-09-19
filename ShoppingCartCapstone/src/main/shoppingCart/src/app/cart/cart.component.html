@@ -51,12 +51,12 @@
                   </li>
                   <!-- <hr>
                   <li>
-                   Impory Duty: {{ dutyTotal | currency }}
+                   Import Duty: {{ dutyTotal | currency }}
                   </li> -->
-                  <hr>
+                   <!-- <hr>
                   <li>
                     Tax: {{ salesTax | currency }}
-                  </li>
+                  </li> -->
                   <hr>
                   <li>
                     Total: {{ total | currency }}
@@ -114,10 +114,10 @@
                   <li>
                     Subtotal: {{ total - (salesTax + importDutyTotal) | currency }}
                   </li>
-                  <!-- <hr>
+                  <hr>
                   <li>
                     Import Duty: {{ dutyTotal | currency }}
-                  </li> -->
+                  </li>
                   <hr>
                   <li>
                     Tax: {{ salesTax | currency }}

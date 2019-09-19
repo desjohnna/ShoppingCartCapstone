@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
         this.total += salesTax;
 
         //CHECK IF PRODUCT IS IMPORTED
-        if (i.isDomestic == false) {
+        if (!i.isDomestic) {
           //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
           let importDuty = i.price * .05;
           //ROUND IMPORT DUTY TO NEAREST .05
@@ -79,7 +79,7 @@ export class CartComponent implements OnInit {
           //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
           let importDuty = i.price * .05;
           //ROUND IMPORT DUTY TO NEAREST .05
-          parseFloat((Math.round(importDuty / .05) * 0.05).toFixed(2))
+          importDuty = parseFloat((Math.round(importDuty / .05) * 0.05).toFixed(2))
 
           this.importDutyTotal = importDuty;
           // console.log(this.importDutyTotal)
@@ -91,7 +91,9 @@ export class CartComponent implements OnInit {
           return this.total
         }
       }
+
     })
+
   }
 
   calculateImportDutyTotal() {
@@ -100,17 +102,17 @@ export class CartComponent implements OnInit {
 
     this.cartItems.forEach(i => {
       //CHECK IF PRODUCT IS IMPORTED
-      if (i.isDomestic == false) {
+      if (!i.isDomestic) {
         //IF PRODUCT IS IMPORTED ADD IMPORT DUTY
-      let dutyTax = (i.price * i.quantity) * .05;
+        let dutyTax = (i.price * i.quantity) * .05;
         //ROUND IMPORT DUTY TO NEAREST .05
-        totalImportDuty = parseFloat((Math.round(totalImportDuty / .05) * 0.05).toFixed(2))
+        dutyTax = parseFloat((Math.round(dutyTax / .05) * 0.05).toFixed(2))
         //ASSIGN TO CLASS VARIABLE
         totalImportDuty += dutyTax;
         // ELSE IF PRODUCT IS DOMESTIC JUST RETURN IMPORT DUTY WHICH IS SET AT 0 ALREADY
       }
     })
-    return this.dutyTotal = totalImportDuty;
+    this.dutyTotal = totalImportDuty;
   }
 
 
@@ -119,19 +121,21 @@ export class CartComponent implements OnInit {
     let totalTax = 0;
     this.cartItems.forEach(i => {
 
-      // IF PRODUCT IS TAX EXEMPT
-      if (i.category == "music" || i.category == "clothes" || i.category == "luxury items") {
+      // IF PRODUCT IS TAXABLE
+      if (i.category == "music" || i.category == "Clothes" || i.category == "luxury items") {
 
         // IF PRODUCT IS NOT TAX EXEMPT APPLY SALES TAX
         let tax = (i.price * i.quantity) * .10;
 
         // ROUND TO NEAREST .05
-        tax = parseFloat((Math.round(tax / .05) * 0.05).toFixed(2));
+        // tax = parseFloat((Math.round(tax / .05) * 0.05).toFixed(2));
         totalTax += tax;
       }
     })
     this.salesTax = totalTax;
-    return this.salesTax;
+    this.salesTax = parseFloat((Math.round(this.salesTax / .05) * 0.05).toFixed(2));
+
+    // return this.salesTax;
   }
 
 
